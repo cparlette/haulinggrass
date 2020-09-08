@@ -10,7 +10,10 @@ extends Node2D
 func _ready():
 	$CanvasLayer/VBoxContainer/GrassCutTotal.set_text("Grass Cut: " + str(globals.grassCut))
 	$CanvasLayer/VBoxContainer/GrassLeft.set_text("Grass Left: " + str(globals.grassLeft.size()))
-
+	var minutes = globals.levelTimeElapsed / 60
+	var seconds = globals.levelTimeElapsed % 60
+	var str_elapsed = "%02d : %02d" % [minutes, seconds]
+	$CanvasLayer/VBoxContainer/TimeElapsed.set_text("Time Elapsed: " + str_elapsed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
