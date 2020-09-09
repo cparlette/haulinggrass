@@ -1,8 +1,5 @@
 extends KinematicBody2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var moveSpeed = 250
 var grassCutTotal = 0
 var vel = Vector2()
@@ -14,10 +11,6 @@ onready var rayCast = $RayCast2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func _physics_process (delta):
 	#use this to have movement stopped unless you press a key
@@ -49,12 +42,11 @@ func _physics_process (delta):
 	#if player hit a bush, increment points and delete bush
 	if get_slide_count():
 		var collision = get_slide_collision(0)
-		if collision.collider.name == "TileMap-bush":
-			var tilemap = get_parent().get_node("TileMap-bush")
-			print("Collided with: ", collision.collider.name)
+		if collision.collider.name == "Grass":
+			var tilemap = get_parent().get_node("LevelData/Grass")
 			var cell = tilemap.world_to_map(collision.position - collision.normal)
 			tilemap.set_cell(cell.x, cell.y, -1)
 			globals.grassCut += 1
-		if collision.collider.name == "TileMap-fence":
+		if collision.collider.name == "Fence":
 			playerIsDead = 1
 	

@@ -1,21 +1,25 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-onready var bushesTM = get_node("TileMap-bush")
 var timeStart = 0
 var timeNow = 0
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	globals.grassLeft = bushesTM.get_used_cells()
+	var levelFileName = "res://Level"+str(globals.level)+".tscn"
+	var newLevelResource = load(levelFileName)
+	var newLevel = newLevelResource.instance()
+	var newLevelData = newLevel.get_node("LevelData")
+	var newPlayer = newLevel.get_node("Player")
+	remove_child($LevelData)
+	newLevel.remove_child(newLevelData)
+	self.add_child(newLevelData)
+	remove_child($Player)
+	newLevel.remove_child(newPlayer)
+	self.add_child(newPlayer)
+	
+	globals.grassLeft = $LevelData/Grass.get_used_cells()
 	globals.grassCut = 0
-	print("total bushes = ", globals.grassLeft.size())
 	timeStart = OS.get_unix_time()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -34,7 +38,7 @@ func _process(delta):
 	$HUD/TimeElapsed.set_text("Time Elapsed: " + str(elapsed) + "s")
 	#print("elapsed : ", str(elapsed))
 	
-	globals.grassLeft = bushesTM.get_used_cells()
+	globals.grassLeft = $LevelData/Grass.get_used_cells()
 
 func game_over():
 	timeNow = OS.get_unix_time()

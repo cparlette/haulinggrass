@@ -17,7 +17,7 @@ func _ready():
 
 
 func _on_NewGameButton_pressed():
-	get_tree().change_scene("Game.tscn")
+	get_tree().change_scene("LevelMenu.tscn")
 
 func _on_SettingsButton_pressed():
 	get_tree().change_scene("Settings.tscn")
