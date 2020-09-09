@@ -4,13 +4,12 @@ var moveSpeed = 250
 var grassCutTotal = 0
 var vel = Vector2()
 var facingDir = Vector2()
-var playerIsDead = 0
 
 onready var rayCast = $RayCast2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	globals.playerIsDead = 0
 
 func _physics_process (delta):
 	#use this to have movement stopped unless you press a key
@@ -48,5 +47,5 @@ func _physics_process (delta):
 			tilemap.set_cell(cell.x, cell.y, -1)
 			globals.grassCut += 1
 		if collision.collider.name == "Fence":
-			playerIsDead = 1
+			globals.playerIsDead = 1
 	

@@ -8,6 +8,12 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if globals.playerIsDead == 1:
+		$CanvasLayer/VBoxContainer/GameOverText.set_text("You ran into a fence!")
+		$ColorRect.color = Color(1, .1, .1, .5)
+	else:
+		$CanvasLayer/VBoxContainer/GameOverText.set_text("You mowed all the grass!")
+		$ColorRect.color = Color(.14,.94,.14,.5)
 	$CanvasLayer/VBoxContainer/GrassCutTotal.set_text("Grass Cut: " + str(globals.grassCut))
 	$CanvasLayer/VBoxContainer/GrassLeft.set_text("Grass Left: " + str(globals.grassLeft.size()))
 	var minutes = globals.levelTimeElapsed / 60

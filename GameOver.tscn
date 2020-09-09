@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://GameOver.gd" type="Script" id=1]
+[ext_resource path="res://dynamicfont-sourcecode.tres" type="DynamicFont" id=2]
+[ext_resource path="res://font-sourcecode-16.tres" type="DynamicFont" id=3]
 
 [node name="GameOverRoot" type="Node2D"]
 script = ExtResource( 1 )
@@ -25,9 +27,10 @@ __meta__ = {
 }
 
 [node name="GameOverText" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 201.0
+margin_top = 178.0
 margin_right = 1024.0
-margin_bottom = 215.0
+margin_bottom = 219.0
+custom_fonts/font = ExtResource( 2 )
 text = "Game Over!"
 align = 1
 __meta__ = {
@@ -35,9 +38,10 @@ __meta__ = {
 }
 
 [node name="GrassCutTotal" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 255.0
+margin_top = 259.0
 margin_right = 1024.0
-margin_bottom = 269.0
+margin_bottom = 280.0
+custom_fonts/font = ExtResource( 3 )
 text = "Grass Cut: "
 align = 1
 __meta__ = {
@@ -45,16 +49,18 @@ __meta__ = {
 }
 
 [node name="GrassLeft" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 309.0
+margin_top = 320.0
 margin_right = 1024.0
-margin_bottom = 323.0
+margin_bottom = 341.0
+custom_fonts/font = ExtResource( 3 )
 text = "Grass remaining: "
 align = 1
 
 [node name="TimeElapsed" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 363.0
+margin_top = 381.0
 margin_right = 1024.0
-margin_bottom = 377.0
+margin_bottom = 402.0
+custom_fonts/font = ExtResource( 3 )
 text = "Time Elapsed:"
 align = 1
 valign = 1
@@ -63,28 +69,31 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
-margin_top = 417.0
+margin_top = 442.0
 margin_right = 1024.0
-margin_bottom = 439.0
-custom_constants/separation = 40
+margin_bottom = 462.0
+custom_constants/separation = 60
 alignment = 1
 
-[node name="MainMenuButton" type="ToolButton" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
-margin_left = 382.0
-margin_right = 465.0
-margin_bottom = 22.0
+[node name="MainMenuButton" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+margin_left = 362.0
+margin_right = 445.0
+margin_bottom = 20.0
+custom_constants/hseparation = 10
 text = "Main Menu"
 
-[node name="RestartButton" type="ToolButton" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+[node name="RestartButton" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 margin_left = 505.0
 margin_right = 562.0
-margin_bottom = 22.0
+margin_bottom = 20.0
+custom_constants/hseparation = 10
 text = "Restart"
 
-[node name="QuitButton" type="ToolButton" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
-margin_left = 602.0
-margin_right = 642.0
-margin_bottom = 22.0
+[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+margin_left = 622.0
+margin_right = 662.0
+margin_bottom = 20.0
+custom_constants/hseparation = 10
 text = "Quit"
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]

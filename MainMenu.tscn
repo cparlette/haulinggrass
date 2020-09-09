@@ -32,14 +32,23 @@ margin_bottom = 640.0
 custom_constants/separation = 0
 alignment = 1
 
-[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="Blank" type="Label" parent="HBoxContainer/VBoxContainer"]
 margin_right = 247.0
 margin_bottom = 41.0
+custom_fonts/font = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 41.0
+margin_right = 247.0
+margin_bottom = 82.0
 custom_fonts/font = ExtResource( 2 )
 text = "Hauling Grass"
 
 [node name="Menu Options" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 41.0
+margin_top = 82.0
 margin_right = 247.0
 margin_bottom = 640.0
 size_flags_vertical = 3
@@ -47,27 +56,27 @@ custom_constants/separation = 30
 alignment = 1
 
 [node name="NewGameButton" type="Button" parent="HBoxContainer/VBoxContainer/Menu Options"]
-margin_top = 214.0
+margin_top = 194.0
 margin_right = 247.0
-margin_bottom = 234.0
+margin_bottom = 214.0
 text = "New Game"
 
 [node name="SettingsButton" type="Button" parent="HBoxContainer/VBoxContainer/Menu Options"]
-margin_top = 264.0
+margin_top = 244.0
 margin_right = 247.0
-margin_bottom = 284.0
+margin_bottom = 264.0
 text = "Settings"
 
 [node name="LeaderboardButton" type="Button" parent="HBoxContainer/VBoxContainer/Menu Options"]
-margin_top = 314.0
+margin_top = 294.0
 margin_right = 247.0
-margin_bottom = 334.0
+margin_bottom = 314.0
 text = "Leaderboard"
 
 [node name="QuitButton" type="Button" parent="HBoxContainer/VBoxContainer/Menu Options"]
-margin_top = 364.0
+margin_top = 344.0
 margin_right = 247.0
-margin_bottom = 384.0
+margin_bottom = 364.0
 text = "Quit"
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Menu Options/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Menu Options/SettingsButton" to="." method="_on_SettingsButton_pressed"]

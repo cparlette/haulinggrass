@@ -27,7 +27,7 @@ func _process(delta):
 	$HUD/GrassLeft.set_text("Grass Left: " + str(globals.grassLeft.size()))
 	if globals.grassLeft.size() == 0:
 		game_over()
-	if get_node("Player").playerIsDead == 1:
+	if globals.playerIsDead == 1:
 		game_over()
 	
 	timeNow = OS.get_unix_time()
