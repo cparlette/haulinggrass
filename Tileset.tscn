@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/fence_1.png" type="Texture" id=1]
 [ext_resource path="res://assets/bush_4.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://assets/fence_right.png" type="Texture" id=19]
 [ext_resource path="res://assets/fence_bottom.png" type="Texture" id=20]
 [ext_resource path="res://assets/fence_top.png" type="Texture" id=21]
+[ext_resource path="res://assets/grass-002.png" type="Texture" id=22]
 
 [node name="Node2D" type="Node2D"]
 
@@ -107,3 +108,7 @@ texture = ExtResource( 19 )
 [node name="fence_top" type="Sprite" parent="."]
 position = Vector2( 112.057, 288.677 )
 texture = ExtResource( 21 )
+
+[node name="grass-002" type="Sprite" parent="."]
+position = Vector2( 17.6698, 301.42 )
+texture = ExtResource( 22 )

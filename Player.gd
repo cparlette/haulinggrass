@@ -18,24 +18,25 @@ func _physics_process (delta):
 	if Input.is_action_pressed("move_up"):
 		vel.x = 0
 		vel.y = -1
-		facingDir = Vector2(0, -1)
+		facingDir = Vector2(-11, 0)
 	if Input.is_action_pressed("move_down"):
 		vel.x = 0
 		vel.y = 1
-		facingDir = Vector2(0, 1)
+		facingDir = Vector2(1, 0)
 	if Input.is_action_pressed("move_left"):
 		vel.x = -1
 		vel.y = 0
-		facingDir = Vector2(-1, 0)
+		facingDir = Vector2(0, 1)
 	if Input.is_action_pressed("move_right"):
 		vel.x = 1
 		vel.y = 0
-		facingDir = Vector2(1, 0)
+		facingDir = Vector2(0, -1)
  
 	# normalize the velocity to prevent faster diagonal movement
 	vel = vel.normalized()
  
 	# move the player
+	rotation = facingDir.angle()
 	move_and_slide(vel * moveSpeed, Vector2.ZERO)
 	
 	#if player hit a bush, increment points and delete bush
