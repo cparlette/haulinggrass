@@ -27,9 +27,9 @@ __meta__ = {
 }
 
 [node name="GameOverText" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 178.0
+margin_top = 146.0
 margin_right = 1024.0
-margin_bottom = 219.0
+margin_bottom = 187.0
 custom_fonts/font = ExtResource( 2 )
 text = "Game Over!"
 align = 1
@@ -38,9 +38,9 @@ __meta__ = {
 }
 
 [node name="GrassCutTotal" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 259.0
+margin_top = 227.0
 margin_right = 1024.0
-margin_bottom = 280.0
+margin_bottom = 248.0
 custom_fonts/font = ExtResource( 3 )
 text = "Grass Cut: "
 align = 1
@@ -49,17 +49,17 @@ __meta__ = {
 }
 
 [node name="GrassLeft" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 320.0
+margin_top = 288.0
 margin_right = 1024.0
-margin_bottom = 341.0
+margin_bottom = 309.0
 custom_fonts/font = ExtResource( 3 )
 text = "Grass remaining: "
 align = 1
 
 [node name="TimeElapsed" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 381.0
+margin_top = 349.0
 margin_right = 1024.0
-margin_bottom = 402.0
+margin_bottom = 370.0
 custom_fonts/font = ExtResource( 3 )
 text = "Time Elapsed:"
 align = 1
@@ -68,10 +68,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
-margin_top = 442.0
+[node name="LeaderInputHBox" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+margin_top = 410.0
 margin_right = 1024.0
-margin_bottom = 462.0
+margin_bottom = 434.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="EnterNameLabel" type="Label" parent="CanvasLayer/VBoxContainer/LeaderInputHBox"]
+margin_left = 354.0
+margin_top = 1.0
+margin_right = 514.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 3 )
+text = "Enter Your Name:"
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/VBoxContainer/LeaderInputHBox"]
+margin_left = 534.0
+margin_right = 592.0
+margin_bottom = 24.0
+text = "Mower"
+max_length = 30
+
+[node name="SubmitNameButton" type="Button" parent="CanvasLayer/VBoxContainer/LeaderInputHBox"]
+margin_left = 612.0
+margin_right = 669.0
+margin_bottom = 24.0
+text = "Submit"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+margin_top = 474.0
+margin_right = 1024.0
+margin_bottom = 494.0
 custom_constants/separation = 60
 alignment = 1
 
@@ -95,6 +123,7 @@ margin_right = 662.0
 margin_bottom = 20.0
 custom_constants/hseparation = 10
 text = "Quit"
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/LeaderInputHBox/SubmitNameButton" to="." method="_on_SubmitNameButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

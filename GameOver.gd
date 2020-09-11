@@ -20,6 +20,8 @@ func _ready():
 	var seconds = globals.levelTimeElapsed % 60
 	var str_elapsed = "%02d : %02d" % [minutes, seconds]
 	$CanvasLayer/VBoxContainer/TimeElapsed.set_text("Time Elapsed: " + str_elapsed)
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -33,3 +35,14 @@ func _on_MainMenuButton_pressed():
 
 func _on_QuitButton_pressed():
 	get_tree().quit()
+
+
+func _on_SubmitNameButton_pressed():
+	var leadersubmit = {}
+	leadersubmit['name'] = $CanvasLayer/VBoxContainer/LeaderInputHBox/LineEdit.text
+	leadersubmit['grassCut'] = globals.grassCut
+	leadersubmit['time'] = globals.levelTimeElapsed
+	globals.leaderboard[str(globals.level)].append(leadersubmit)
+	globals.sortLeaderboard()
+	globals.saveLeaderboard()
+	$CanvasLayer/VBoxContainer/LeaderInputHBox.visible = false
