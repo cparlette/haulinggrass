@@ -10,6 +10,16 @@ var leaderboardSaveFile = File.new()
 var leaderboardSavePath = "user://Leaderboard.json"
 var leaderboard = {'1':[], '2':[], '3':[]}
 
+# Here's the fields on the campaignPlayer once loaded:
+# 'name': $NewCampaignMenu/NameEntry.text,
+#'experience': 0,
+#'money': 0,
+#'maxMowerHealth': 5,
+#'currentMowerHealth': 5
+var campaignPlayer = {}
+
+
+
 #Save & Load
 func saveLeaderboard():
 	leaderboardSaveFile.open(leaderboardSavePath,leaderboardSaveFile.WRITE)
@@ -38,3 +48,14 @@ class LeaderboardSorter:
 			if a["time"] < b["time"]:
 				return true
 		return false
+
+
+func savePlayer():
+	if campaignPlayer.has('name'):
+		var playerSaveFile = File.new()
+		var playerSavePath = "user://savedGames/"+campaignPlayer['name']+".json"
+		playerSaveFile.open(playerSavePath,playerSaveFile.WRITE)
+		playerSaveFile.store_line(to_json(campaignPlayer))
+		playerSaveFile.close()
+	else:
+		print("No player name found!  That is a problem!")

@@ -154,6 +154,44 @@ tile_data = PoolIntArray( 65545, 20, 0, 65546, 20, 0, 65547, 20, 0, 65548, 20, 0
 [node name="mower-001" type="Sprite" parent="MiniLawn"]
 position = Vector2( 767.855, 242.472 )
 texture = ExtResource( 8 )
+
+[node name="LoadCampaignMenu" type="Node2D" parent="."]
+visible = false
+
+[node name="OptionButton" type="OptionButton" parent="LoadCampaignMenu"]
+margin_left = 150.0
+margin_top = 225.0
+margin_right = 450.0
+margin_bottom = 245.0
+text = "Saved Game Name: "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadGameButton" type="Button" parent="LoadCampaignMenu"]
+margin_left = 225.0
+margin_top = 300.0
+margin_right = 374.0
+margin_bottom = 321.0
+text = "Load Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackToMainButton" type="Button" parent="LoadCampaignMenu"]
+margin_left = 225.0
+margin_top = 350.0
+margin_right = 374.0
+margin_bottom = 371.0
+text = "Back To Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="TopMenu/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="TopMenu/LeaderboardButton" to="." method="_on_LeaderboardButton_pressed"]
+[connection signal="pressed" from="TopMenu/NewCampaignButton" to="." method="_on_NewCampaignButton_pressed"]
+[connection signal="pressed" from="TopMenu/LoadCampaignButton" to="." method="_on_LoadCampaignButton_pressed"]
 [connection signal="pressed" from="TopMenu/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="LoadCampaignMenu/LoadGameButton" to="." method="_on_LoadGameButton_pressed"]
+[connection signal="pressed" from="LoadCampaignMenu/BackToMainButton" to="." method="_on_BackToMainButton_pressed"]
