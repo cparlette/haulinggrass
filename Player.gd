@@ -18,7 +18,7 @@ func _physics_process (delta):
 	if Input.is_action_pressed("move_up"):
 		vel.x = 0
 		vel.y = -1
-		facingDir = Vector2(-11, 0)
+		facingDir = Vector2(-1, 0)
 	if Input.is_action_pressed("move_down"):
 		vel.x = 0
 		vel.y = 1

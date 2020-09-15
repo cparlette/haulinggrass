@@ -17,12 +17,16 @@ func _on_LevelButton_pressed(button):
 	$HBoxContainer/VBoxContainer/MenuOptions.visible = false
 	var level_chosen = button.name.lstrip("Level").rstrip("LeaderboardButton").to_int()
 	var leaders = globals.leaderboard[str(level_chosen)]
-	var leaderstext = "Name		Grass Cut		Time\n"
+	var leadersTextName = "Name\n"
+	var leadersTextGrassCut = "Grass Cut\n"
+	var leadersTextTime = "Time\n"
 	for item in leaders:
-		leaderstext += item["name"] + "		"
-		leaderstext += str(item["grassCut"]) + "		"
-		leaderstext += str(item["time"]) + "\n"
-	$HBoxContainer/VBoxContainer/LeadersDisplay/TextEdit.text = leaderstext
+		leadersTextName += item["name"] + "\n"
+		leadersTextGrassCut += str(item["grassCut"]) + "\n"
+		leadersTextTime += str(item["time"]) + "\n"
+	$HBoxContainer/VBoxContainer/LeadersDisplay/HBoxContainer/Name.text = leadersTextName
+	$HBoxContainer/VBoxContainer/LeadersDisplay/HBoxContainer/GrassCut.text = leadersTextGrassCut
+	$HBoxContainer/VBoxContainer/LeadersDisplay/HBoxContainer/Time.text = leadersTextTime
 
 
 func _on_MainMenuButton_pressed():
