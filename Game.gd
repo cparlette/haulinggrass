@@ -2,11 +2,12 @@ extends Node2D
 
 var timeStart = 0
 var timeNow = 0
+var newLevelResource
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var levelFileName = "res://Levels/"+globals.level+".tscn"
-	var newLevelResource = load(levelFileName)
+	newLevelResource = load(levelFileName)
 	var newLevel = newLevelResource.instance()
 	var newLevelData = newLevel.get_node("LevelData")
 	var newPlayer = newLevel.get_node("Player")
@@ -29,6 +30,12 @@ func _process(delta):
 		game_over()
 	if globals.playerIsDead == 1:
 		game_over()
+	if $Player.hit == true:
+		self.remove_child($Player)
+		var newLevel = newLevelResource.instance()
+		var newPlayer = newLevel.get_node("Player")
+		newLevel.remove_child(newPlayer)
+		self.add_child(newPlayer)
 	
 	timeNow = OS.get_unix_time()
 	var elapsed = timeNow - timeStart
@@ -37,6 +44,16 @@ func _process(delta):
 	#var str_elapsed = "%02d : %02d" % [minutes, seconds]
 	$HUD/TimeElapsed.set_text("Time Elapsed: " + str(elapsed) + "s")
 	#print("elapsed : ", str(elapsed))
+	
+	if globals.campaignMode == true:
+		$HUD/MowerHealth.visible = true
+		var mowerHealthText = "Mower Health: "
+		mowerHealthText += str(globals.campaignPlayer['currentMowerHealth'])
+		mowerHealthText += " / "
+		mowerHealthText += str(globals.campaignPlayer['maxMowerHealth'])
+		$HUD/MowerHealth.set_text(mowerHealthText)
+	else:
+		$HUD/MowerHealth.visible = false
 	
 	globals.grassLeft = $LevelData/Grass.get_used_cells()
 

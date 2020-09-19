@@ -4,6 +4,7 @@ var moveSpeed = 250
 var grassCutTotal = 0
 var vel = Vector2()
 var facingDir = Vector2()
+var hit = false
 
 onready var rayCast = $RayCast2D
 
@@ -54,4 +55,6 @@ func _physics_process (delta):
 				globals.campaignPlayer['currentMowerHealth'] -= 1
 				if globals.campaignPlayer['currentMowerHealth'] == 0:
 					globals.playerIsDead = 1
+				else:
+					hit = true
 	
