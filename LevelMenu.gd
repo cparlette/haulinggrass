@@ -6,7 +6,7 @@ func _ready():
 		button.connect("pressed", self, "_on_LevelButton_pressed", [button])
 
 func _on_LevelButton_pressed(button):
-	globals.level = button.name.lstrip("Level").rstrip("Button").to_int()
+	globals.level = button.name.rstrip("Button").replace(" ","")
 	get_tree().change_scene("Game.tscn")
 
 func _on_MainMenuButton_pressed():

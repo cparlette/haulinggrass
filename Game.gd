@@ -5,7 +5,7 @@ var timeNow = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var levelFileName = "res://Level"+str(globals.level)+".tscn"
+	var levelFileName = "res://Levels/"+globals.level+".tscn"
 	var newLevelResource = load(levelFileName)
 	var newLevel = newLevelResource.instance()
 	var newLevelData = newLevel.get_node("LevelData")

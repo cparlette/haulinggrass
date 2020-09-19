@@ -48,5 +48,10 @@ func _physics_process (delta):
 			tilemap.set_cell(cell.x, cell.y, -1)
 			globals.grassCut += 1
 		if collision.collider.name == "Fence":
-			globals.playerIsDead = 1
+			if globals.campaignMode == false:
+				globals.playerIsDead = 1
+			else:
+				globals.campaignPlayer['currentMowerHealth'] -= 1
+				if globals.campaignPlayer['currentMowerHealth'] == 0:
+					globals.playerIsDead = 1
 	

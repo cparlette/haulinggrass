@@ -3,8 +3,9 @@ extends Node
 var grassLeft = 0
 var grassCut = 0
 var levelTimeElapsed = 0
-var level = 0
+var level = "Level1"
 var playerIsDead = 0
+var campaignMode = false
 
 var leaderboardSaveFile = File.new()
 var leaderboardSavePath = "user://Leaderboard.json"
