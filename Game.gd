@@ -52,6 +52,11 @@ func _process(delta):
 		mowerHealthText += " / "
 		mowerHealthText += str(globals.campaignPlayer['maxMowerHealth'])
 		$HUD/MowerHealth.set_text(mowerHealthText)
+		
+		# Check if player health is negative and mark them dead
+		# This was a bug before fixing mowers was possible, but good to check
+		if globals.campaignPlayer['currentMowerHealth'] < 1:
+			globals.playerIsDead = true
 	else:
 		$HUD/MowerHealth.visible = false
 	
