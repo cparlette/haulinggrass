@@ -192,5 +192,6 @@ text = "Cancel"
 [connection signal="pressed" from="NewCampaignMenu/NameSubmitButton" to="." method="_on_NameSubmitButton_pressed"]
 [connection signal="pressed" from="NewCampaignMenu/CancelToMainMenuButton" to="." method="_on_CancelToMainMenuButton_pressed"]
 [connection signal="pressed" from="CampaignUI/SaveAndQuitButton" to="." method="_on_SaveAndQuitButton_pressed"]
+[connection signal="pressed" from="CampaignUI/RepairMowerButton" to="." method="_on_RepairMowerButton_pressed"]
 [connection signal="pressed" from="CampaignUI/MowLawnButton" to="." method="_on_MowLawnButton_pressed"]
 [connection signal="pressed" from="LevelPicker/CloseLevelPickerButton" to="." method="_on_CloseLevelPickerButton_pressed"]

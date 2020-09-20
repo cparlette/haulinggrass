@@ -78,3 +78,9 @@ func getLevelFiles():
 func _on_CloseLevelPickerButton_pressed():
 	$LevelPicker.visible = false
 	$CampaignUI.visible = true
+
+
+func _on_RepairMowerButton_pressed():
+	# FIXME - need to add logic here around paying
+	globals.campaignPlayer['currentMowerHealth'] = globals.campaignPlayer['maxMowerHealth']
+	refreshUI()
