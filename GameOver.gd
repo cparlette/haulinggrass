@@ -20,7 +20,12 @@ func _ready():
 	var seconds = globals.levelTimeElapsed % 60
 	var str_elapsed = "%02d : %02d" % [minutes, seconds]
 	$CanvasLayer/VBoxContainer/TimeElapsed.set_text("Time Elapsed: " + str_elapsed)
-	
+	if globals.campaignMode == true:
+		$CanvasLayer/VBoxContainer/ArcadeOptions.visible = false
+		$CanvasLayer/VBoxContainer/CampaignOptions.visible = true
+	else:
+		$CanvasLayer/VBoxContainer/CampaignOptions.visible = false
+		$CanvasLayer/VBoxContainer/ArcadeOptions.visible = true
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,3 +51,7 @@ func _on_SubmitNameButton_pressed():
 	globals.sortLeaderboard()
 	globals.saveLeaderboard()
 	$CanvasLayer/VBoxContainer/LeaderInputHBox.visible = false
+
+
+func _on_BackToCampaign_pressed():
+	get_tree().change_scene("res://Campaign.tscn")
