@@ -4,7 +4,7 @@ var grassLeft = 0
 var grassCut = 0
 var levelTimeElapsed = 0
 var level = "Level1"
-var playerIsDead = 0
+var playerIsDead = false
 var campaignMode = false
 
 var leaderboardSaveFile = File.new()

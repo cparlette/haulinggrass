@@ -28,7 +28,7 @@ func _process(delta):
 	$HUD/GrassLeft.set_text("Grass Left: " + str(globals.grassLeft.size()))
 	if globals.grassLeft.size() == 0:
 		game_over()
-	if globals.playerIsDead == 1:
+	if globals.playerIsDead == true:
 		game_over()
 	if $Player.hit == true:
 		self.remove_child($Player)

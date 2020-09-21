@@ -10,7 +10,7 @@ onready var rayCast = $RayCast2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	globals.playerIsDead = 0
+	globals.playerIsDead = false
 
 func _physics_process (delta):
 	#use this to have movement stopped unless you press a key
@@ -50,11 +50,11 @@ func _physics_process (delta):
 			globals.grassCut += 1
 		if collision.collider.name == "Fence":
 			if globals.campaignMode == false:
-				globals.playerIsDead = 1
+				globals.playerIsDead = true
 			else:
 				globals.campaignPlayer['currentMowerHealth'] -= 1
 				if globals.campaignPlayer['currentMowerHealth'] == 0:
-					globals.playerIsDead = 1
+					globals.playerIsDead = true
 				else:
 					hit = true
 	

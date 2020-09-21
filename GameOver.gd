@@ -8,7 +8,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if globals.playerIsDead == 1:
+	if globals.playerIsDead == true:
 		$CanvasLayer/VBoxContainer/GameOverText.set_text("You ran into a fence!")
 		$ColorRect.color = Color(1, .1, .1, .5)
 	else:
@@ -54,4 +54,6 @@ func _on_SubmitNameButton_pressed():
 
 
 func _on_BackToCampaign_pressed():
+	globals.campaignPlayer['experience'] += globals.grassCut
+	globals.campaignPlayer['money'] += (globals.grassCut / 4)
 	get_tree().change_scene("res://Campaign.tscn")
