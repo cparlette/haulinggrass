@@ -82,5 +82,33 @@ func _on_CloseLevelPickerButton_pressed():
 
 func _on_RepairMowerButton_pressed():
 	# FIXME - need to add logic here around paying
-	globals.campaignPlayer['currentMowerHealth'] = globals.campaignPlayer['maxMowerHealth']
+	#globals.campaignPlayer['currentMowerHealth'] = globals.campaignPlayer['maxMowerHealth']
+	#refreshUI()
+	$CampaignUI/RepairPopupMenu.rect_position = $CampaignUI/RepairMowerButton.rect_position
+	$CampaignUI/RepairPopupMenu.popup()
+
+
+func _on_RepairPopupMenu_index_pressed(index):
+	if index == 0:
+		# heal 1
+		if globals.campaignPlayer['currentMowerHealth'] < globals.campaignPlayer['maxMowerHealth']:
+			globals.campaignPlayer['currentMowerHealth'] += 1
+			globals.campaignPlayer['money'] -= 5
+	elif index == 1:
+		# heal all
+		globals.campaignPlayer['currentMowerHealth'] = globals.campaignPlayer['maxMowerHealth']
+		globals.campaignPlayer['money'] -= costToHealAll()
+	elif index == 2:
+		# cancel button
+		pass
+
+func costToHealAll():
+	var lostHealth = globals.campaignPlayer['maxMowerHealth'] - globals.campaignPlayer['currentMowerHealth']
+	return int(lostHealth * 5)
+
+func _on_RepairPopupMenu_about_to_show():
+	var repairAllText = "Repair All - $" + str(costToHealAll())
+	$CampaignUI/RepairPopupMenu.set_item_text(1, repairAllText)
+
+func _on_RepairPopupMenu_popup_hide():
 	refreshUI()

@@ -163,6 +163,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RepairPopupMenu" type="PopupMenu" parent="CampaignUI"]
+margin_right = 20.0
+margin_bottom = 20.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 5
+items = [ "Repair 1 - $5", null, 0, false, false, 0, 0, null, "", false, "Repair All - $", null, 0, false, false, 1, 0, null, "", false, "Cancel", null, 0, false, false, 2, 0, null, "", false ]
+
 [node name="LevelPicker" type="Control" parent="."]
 visible = false
 margin_left = 120.0
@@ -194,4 +201,7 @@ text = "Cancel"
 [connection signal="pressed" from="CampaignUI/SaveAndQuitButton" to="." method="_on_SaveAndQuitButton_pressed"]
 [connection signal="pressed" from="CampaignUI/RepairMowerButton" to="." method="_on_RepairMowerButton_pressed"]
 [connection signal="pressed" from="CampaignUI/MowLawnButton" to="." method="_on_MowLawnButton_pressed"]
+[connection signal="about_to_show" from="CampaignUI/RepairPopupMenu" to="." method="_on_RepairPopupMenu_about_to_show"]
+[connection signal="index_pressed" from="CampaignUI/RepairPopupMenu" to="." method="_on_RepairPopupMenu_index_pressed"]
+[connection signal="popup_hide" from="CampaignUI/RepairPopupMenu" to="." method="_on_RepairPopupMenu_popup_hide"]
 [connection signal="pressed" from="LevelPicker/CloseLevelPickerButton" to="." method="_on_CloseLevelPickerButton_pressed"]
