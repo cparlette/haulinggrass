@@ -17,8 +17,41 @@ var leaderboard = {'1':[], '2':[], '3':[]}
 #'money': 0,
 #'maxMowerHealth': 5,
 #'currentMowerHealth': 5
+#'availableJobs': {}
 var campaignPlayer = {}
 
+# storing info here about campaign levels
+# Should I have this in a json and load it? or in the individual level file?
+var campaignLevels = {
+	"Campaign1": {
+		"experienceNeeded": 0,
+		"experienceEarned": 100,
+		"moneyEarned": 20,
+		"file": "res://Levels/Campaign1.tscn",
+		"name": "Campaign1"
+	},
+	"Level1": {
+		"experienceNeeded": 0,
+		"experienceEarned": 50,
+		"moneyEarned": 10,
+		"file": "res://Levels/Level1.tscn",
+		"name": "Level1"
+	},
+	"Level2": {
+		"experienceNeeded": 250,
+		"experienceEarned": 150,
+		"moneyEarned": 50,
+		"file": "res://Levels/Level2.tscn",
+		"name": "Level2"
+	},
+	"Level3": {
+		"experienceNeeded": 500,
+		"experienceEarned": 150,
+		"moneyEarned": 75,
+		"file": "res://Levels/Level3.tscn",
+		"name": "Level3"
+	},
+}
 
 
 #Save & Load

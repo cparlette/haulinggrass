@@ -163,6 +163,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LookForAJobButton" type="Button" parent="CampaignUI"]
+margin_left = 750.0
+margin_top = 300.0
+margin_right = 870.0
+margin_bottom = 330.0
+text = "Look For A Job"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpgradeMowerButton" type="Button" parent="CampaignUI"]
+margin_left = 750.0
+margin_top = 400.0
+margin_right = 870.0
+margin_bottom = 430.0
+text = "Upgrade Mower"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="RepairPopupMenu" type="PopupMenu" parent="CampaignUI"]
 margin_right = 20.0
 margin_bottom = 20.0
@@ -201,6 +221,7 @@ text = "Cancel"
 [connection signal="pressed" from="CampaignUI/SaveAndQuitButton" to="." method="_on_SaveAndQuitButton_pressed"]
 [connection signal="pressed" from="CampaignUI/RepairMowerButton" to="." method="_on_RepairMowerButton_pressed"]
 [connection signal="pressed" from="CampaignUI/MowLawnButton" to="." method="_on_MowLawnButton_pressed"]
+[connection signal="pressed" from="CampaignUI/LookForAJobButton" to="." method="_on_LookForAJobButton_pressed"]
 [connection signal="about_to_show" from="CampaignUI/RepairPopupMenu" to="." method="_on_RepairPopupMenu_about_to_show"]
 [connection signal="index_pressed" from="CampaignUI/RepairPopupMenu" to="." method="_on_RepairPopupMenu_index_pressed"]
 [connection signal="popup_hide" from="CampaignUI/RepairPopupMenu" to="." method="_on_RepairPopupMenu_popup_hide"]

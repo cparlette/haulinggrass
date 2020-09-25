@@ -54,6 +54,12 @@ func _on_SubmitNameButton_pressed():
 
 
 func _on_BackToCampaign_pressed():
-	globals.campaignPlayer['experience'] += globals.grassCut
-	globals.campaignPlayer['money'] += (globals.grassCut / 4)
+	if globals.grassLeft.size() == 0:
+		# all grass cut, full experience and money
+		globals.campaignPlayer['experience'] += globals.campaignLevels[globals.level]['experienceEarned']
+		globals.campaignPlayer['money'] += globals.campaignLevels[globals.level]['moneyEarned']
+	elif globals.grassCut > globals.grassLeft.size():
+		# majority of grass cut, half experience and half money
+		globals.campaignPlayer['experience'] += ( globals.campaignLevels[globals.level]['experienceEarned'] / 2 )
+		globals.campaignPlayer['money'] += ( globals.campaignLevels[globals.level]['moneyEarned'] / 2 )
 	get_tree().change_scene("res://Campaign.tscn")

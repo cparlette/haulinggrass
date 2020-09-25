@@ -6,7 +6,11 @@ var newLevelResource
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var levelFileName = "res://Levels/"+globals.level+".tscn"
+	var levelFileName = ""
+	if globals.campaignMode == true:
+		levelFileName = globals.campaignLevels[globals.level]['file']
+	else:
+		levelFileName = "res://Levels/"+globals.level+".tscn"
 	newLevelResource = load(levelFileName)
 	var newLevel = newLevelResource.instance()
 	var newLevelData = newLevel.get_node("LevelData")

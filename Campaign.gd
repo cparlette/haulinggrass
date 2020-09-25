@@ -28,7 +28,8 @@ func _on_NameSubmitButton_pressed():
 		'experience': 0,
 		'money': 10,
 		'maxMowerHealth': 5,
-		'currentMowerHealth': 5
+		'currentMowerHealth': 5,
+		'availableJobs': []
 	}
 	globals.savePlayer()
 	$NewCampaignMenu.visible = false
@@ -50,10 +51,10 @@ func _on_SaveAndQuitButton_pressed():
 func _on_MowLawnButton_pressed():
 	for i in $LevelPicker/CenterContainer/LevelButtons.get_children():
 		$LevelPicker/CenterContainer/LevelButtons.remove_child(i)
-	var levelsAvailable = getLevelFiles()
-	for level in levelsAvailable:
+	#var levelsAvailable = getLevelFiles()
+	for level in globals.campaignPlayer['availableJobs']:
 		var button = Button.new()
-		button.name = level.rstrip(".tscn")
+		button.name = level
 		button.text = button.name
 		button.connect("pressed", self, "_on_LevelButton_pressed", [button])
 		$LevelPicker/CenterContainer/LevelButtons.add_child(button)
@@ -112,3 +113,30 @@ func _on_RepairPopupMenu_about_to_show():
 
 func _on_RepairPopupMenu_popup_hide():
 	refreshUI()
+
+
+func _on_LookForAJobButton_pressed():
+	# Figure out what levels are available based on experience
+	var availableLevels = []
+	for level in globals.campaignLevels:
+		if globals.campaignPlayer['experience'] >= globals.campaignLevels[level]['experienceNeeded']:
+			if level in globals.campaignPlayer['availableJobs']:
+				pass
+			else:
+				availableLevels.append(level)
+	# Put those levels into the LevelPicker
+	for i in $LevelPicker/CenterContainer/LevelButtons.get_children():
+		$LevelPicker/CenterContainer/LevelButtons.remove_child(i)
+	for level in availableLevels:
+		var button = Button.new()
+		button.name = level
+		button.text = button.name
+		button.connect("pressed", self, "takeJob", [button])
+		$LevelPicker/CenterContainer/LevelButtons.add_child(button)
+	$CampaignUI.visible = false
+	$LevelPicker.visible = true
+
+func takeJob(button):
+	globals.campaignPlayer['availableJobs'].append(button.name)
+	$LevelPicker.visible = false
+	$CampaignUI.visible = true
