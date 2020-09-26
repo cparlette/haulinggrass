@@ -20,6 +20,7 @@ func refreshUI():
 	mowHealthString += " / "
 	mowHealthString += str(globals.campaignPlayer['maxMowerHealth'])
 	$CampaignUI/MowerHealthLabel.text = mowHealthString
+	$CampaignUI/CurrentDayLabel.text = "Current Day: "+str(globals.campaignPlayer['currentDay'])
 
 func _on_NameSubmitButton_pressed():
 	globals.campaignPlayer = {
@@ -28,7 +29,9 @@ func _on_NameSubmitButton_pressed():
 		'money': 10,
 		'maxMowerHealth': 5,
 		'currentMowerHealth': 5,
-		'availableJobs': []
+		'availableJobs': [],
+		'jobLastDone': {},
+		'currentDay': 1
 	}
 	globals.savePlayer()
 	$NewCampaignMenu.visible = false
@@ -55,6 +58,9 @@ func _on_MowLawnButton_pressed():
 		var button = CampaignJobButton.new()
 		button._set_job(level)
 		button.connect("selected_job", self, "_on_LevelButton_pressed")
+		if globals.campaignPlayer['jobLastDone'][level] > (globals.campaignPlayer['currentDay'] - 2):
+			button.disabled = true
+			button.modulate = Color(0.5,0.5,0.5,1)
 		$LevelPicker/CenterContainer/LevelButtons.add_child(button)
 	$CampaignUI.visible = false
 	$LevelPicker.visible = true
@@ -136,5 +142,11 @@ func _on_LookForAJobButton_pressed():
 func takeJob(job):
 	print("in takeJob")
 	globals.campaignPlayer['availableJobs'].append(job['name'])
+	globals.campaignPlayer['jobLastDone'][job['name']] = -3
 	$LevelPicker.visible = false
 	$CampaignUI.visible = true
+
+
+func _on_NextDayButton_pressed():
+	globals.campaignPlayer['currentDay'] += 1
+	refreshUI()

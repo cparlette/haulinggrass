@@ -62,4 +62,6 @@ func _on_BackToCampaign_pressed():
 		# majority of grass cut, half experience and half money
 		globals.campaignPlayer['experience'] += ( globals.campaignLevels[globals.level]['experienceEarned'] / 2 )
 		globals.campaignPlayer['money'] += ( globals.campaignLevels[globals.level]['moneyEarned'] / 2 )
+	globals.campaignPlayer['jobLastDone'][globals.level] = globals.campaignPlayer['currentDay']
+	globals.campaignPlayer['currentDay'] += 1
 	get_tree().change_scene("res://Campaign.tscn")
