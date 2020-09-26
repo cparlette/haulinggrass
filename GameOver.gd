@@ -44,13 +44,13 @@ func _on_QuitButton_pressed():
 
 func _on_SubmitNameButton_pressed():
 	var leadersubmit = {}
-	leadersubmit['name'] = $CanvasLayer/VBoxContainer/LeaderInputHBox/LineEdit.text
+	leadersubmit['name'] = $CanvasLayer/VBoxContainer/ArcadeOptions/LeaderInputHBox/LineEdit.text
 	leadersubmit['grassCut'] = globals.grassCut
 	leadersubmit['time'] = globals.levelTimeElapsed
-	globals.leaderboard[str(globals.level)].append(leadersubmit)
+	globals.leaderboard[str(globals.level).lstrip("Level")].append(leadersubmit)
 	globals.sortLeaderboard()
 	globals.saveLeaderboard()
-	$CanvasLayer/VBoxContainer/LeaderInputHBox.visible = false
+	$CanvasLayer/VBoxContainer/ArcadeOptions/LeaderInputHBox.visible = false
 
 
 func _on_BackToCampaign_pressed():
