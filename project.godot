@@ -31,6 +31,7 @@ globals="*res://globals.gd"
 [display]
 
 window/size/height=640
+window/vsync/use_vsync=false
 
 [input]
 
@@ -61,4 +62,5 @@ move_down={
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
