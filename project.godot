@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Button",
+"class": "CampaignJobButton",
+"language": "GDScript",
+"path": "res://Campaign/CampaignJobButton.gd"
+} ]
 _global_script_class_icons={
-
+"CampaignJobButton": ""
 }
 
 [application]

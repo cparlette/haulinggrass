@@ -1,6 +1,5 @@
 extends Control
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	globals.campaignMode = true
@@ -53,16 +52,15 @@ func _on_MowLawnButton_pressed():
 		$LevelPicker/CenterContainer/LevelButtons.remove_child(i)
 	#var levelsAvailable = getLevelFiles()
 	for level in globals.campaignPlayer['availableJobs']:
-		var button = Button.new()
-		button.name = level
-		button.text = button.name
-		button.connect("pressed", self, "_on_LevelButton_pressed", [button])
+		var button = CampaignJobButton.new()
+		button._set_job(level)
+		button.connect("selected_job", self, "_on_LevelButton_pressed")
 		$LevelPicker/CenterContainer/LevelButtons.add_child(button)
 	$CampaignUI.visible = false
 	$LevelPicker.visible = true
 
-func _on_LevelButton_pressed(button):
-	globals.level = button.name
+func _on_LevelButton_pressed(job):
+	globals.level = job['name']
 	get_tree().change_scene("Game.tscn")
 
 func getLevelFiles():
@@ -128,15 +126,15 @@ func _on_LookForAJobButton_pressed():
 	for i in $LevelPicker/CenterContainer/LevelButtons.get_children():
 		$LevelPicker/CenterContainer/LevelButtons.remove_child(i)
 	for level in availableLevels:
-		var button = Button.new()
-		button.name = level
-		button.text = button.name
-		button.connect("pressed", self, "takeJob", [button])
+		var button = CampaignJobButton.new()
+		button._set_job(level)
+		button.connect("selected_job", self, "takeJob")
 		$LevelPicker/CenterContainer/LevelButtons.add_child(button)
 	$CampaignUI.visible = false
 	$LevelPicker.visible = true
 
-func takeJob(button):
-	globals.campaignPlayer['availableJobs'].append(button.name)
+func takeJob(job):
+	print("in takeJob")
+	globals.campaignPlayer['availableJobs'].append(job['name'])
 	$LevelPicker.visible = false
 	$CampaignUI.visible = true
