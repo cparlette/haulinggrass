@@ -31,6 +31,15 @@ position = Vector2( 98.5895, 88.8462 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
+[node name="ColorRect" type="ColorRect" parent="HUD"]
+modulate = Color( 1, 1, 1, 0.639216 )
+anchor_right = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TimeElapsed" type="Label" parent="HUD"]
 margin_left = 64.0
 margin_top = 5.0
